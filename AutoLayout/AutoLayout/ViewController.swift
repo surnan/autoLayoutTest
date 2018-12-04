@@ -19,19 +19,13 @@ class ViewController: UIViewController {
     
     let descriptionTextView: UITextView = {
         let textView = UITextView()
-        //        textView.text = "Welcome, Hero"
-        //        textView.font = UIFont.boldSystemFont(ofSize: 18)
+
+        let attributedText2 = NSMutableAttributedString(string: "Welcome, HERO", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18)])
+
+        attributedText2.append(NSAttributedString(string: "\n\n\nAre you ready to begin your journey?!?!  Before setting out on your first quest, look around town and see if there are any merchants or trainers willing to assist a young adventurer ready to make his/her name", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13), NSMutableAttributedString.Key.foregroundColor: UIColor.gray]))
         
         
-        let attributedText: [NSAttributedString.Key: Any] = [
-            NSAttributedString.Key.strokeColor: UIColor.black,
-            NSAttributedString.Key.foregroundColor: UIColor.white,
-            NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-            NSAttributedString.Key.strokeWidth: -4.6
-        ]
-        
-        textView.attributedText = NSMutableAttributedString(string: "Welcome, HERO", attributes: attributedText)
-        
+        textView.attributedText = attributedText2
         textView.textAlignment = .center
         textView.isEditable = false
         textView.isScrollEnabled = false
@@ -59,8 +53,8 @@ class ViewController: UIViewController {
             
             descriptionTextView.topAnchor.constraint(equalTo: topImageContainerView.bottomAnchor, constant: 60),
             descriptionTextView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            descriptionTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            descriptionTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            descriptionTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            descriptionTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             ])
     }
     
