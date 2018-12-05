@@ -40,6 +40,35 @@ class ViewController: UIViewController {
         return image
     }()
     
+    let previousButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Prev", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.setTitleColor(UIColor.gray, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    let nextButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Next", for: .normal)
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.setTitleColor(UIColor.mainPink, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    let pageControl: UIPageControl = {
+       let pc = UIPageControl()
+        pc.currentPage = 0
+        pc.numberOfPages = 4
+        pc.currentPageIndicatorTintColor = UIColor.mainPink
+        pc.pageIndicatorTintColor = UIColor.gray
+        return pc
+    }()
+    
+    
     fileprivate func setupLayout() {
         NSLayoutConstraint.activate([
             topImageContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -60,18 +89,30 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
         topImageContainerView.addSubview(bearImageView)
-        
-        
-        
-        
-        
-        
         [descriptionTextView, topImageContainerView].forEach{view.addSubview($0)}
         setupLayout()
+        setupBottomControls()
+    }
+    
+    
+    func setupBottomControls(){
+//        previousButton.frame = CGRect(x: 0, y: 0, width: 200, height: 50) //not valid with auto-layout
+        
+        let greenView = UIView(); greenView.backgroundColor = UIColor.green
+        
+        let bottomControlsStackView = UIStackView(arrangedSubviews: [previousButton, pageControl, nextButton])
+        bottomControlsStackView.distribution = .fillEqually
+    
+        bottomControlsStackView.translatesAutoresizingMaskIntoConstraints = false
+        [bottomControlsStackView].forEach{view.addSubview($0)}
+        
+        NSLayoutConstraint.activate([
+            bottomControlsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            bottomControlsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            bottomControlsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            bottomControlsStackView.heightAnchor.constraint(equalToConstant: 50)
+            ])
     }
     
     func setupTextField(textField: UITextField) -> UITextField{
@@ -89,6 +130,3 @@ class ViewController: UIViewController {
         return tempTextField
     }
 }
-
-
-
