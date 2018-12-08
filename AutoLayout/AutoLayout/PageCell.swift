@@ -8,17 +8,41 @@
 
 import UIKit
 
+
+/*
+ let attributedText2 = NSMutableAttributedString(string: "Welcome, HERO", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18)])
+ 
+ attributedText2.append(NSAttributedString(string: "\n\n\nAre you ready to begin your journey?!?!  Before setting out on your first quest, look around town and see if there are any merchants or trainers willing to assist a young adventurer ready to make his/her name", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13), NSMutableAttributedString.Key.foregroundColor: UIColor.gray]))
+ 
+ 
+ textView.attributedText = attributedText2
+ */
+
 class PageCell: UICollectionViewCell {
     
+    var page: Page? {
+        didSet {
+            
+            guard let unwrappedPage = page else {return}
+            
+            bearImageView.image = UIImage(named: unwrappedPage.imageName)
+            
+            let attributedText2 = NSMutableAttributedString(string: unwrappedPage.headerText, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18)])
+            
+            attributedText2.append(NSAttributedString(string: "\n\n\n\(unwrappedPage.bodyText)", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13), NSMutableAttributedString.Key.foregroundColor: UIColor.gray]))
+            descriptionTextView.attributedText = attributedText2
+            descriptionTextView.textAlignment = .center
+        }
+    }
     
-    let bearImageView: UIImageView = {
+    private let bearImageView: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "bear_first"))
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-    let topImageContainerView: UIView = {
+    private let topImageContainerView: UIView = {
         let image = UIView()
         image.backgroundColor = UIColor.blue
         image.translatesAutoresizingMaskIntoConstraints = false
