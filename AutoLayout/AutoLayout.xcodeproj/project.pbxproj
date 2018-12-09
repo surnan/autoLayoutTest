@@ -8,21 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		8431C20F21B711F90017CF39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8431C20E21B711F90017CF39 /* AppDelegate.swift */; };
-		8431C21121B711F90017CF39 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8431C21021B711F90017CF39 /* ViewController.swift */; };
-		8431C21421B711F90017CF39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8431C21221B711F90017CF39 /* Main.storyboard */; };
 		8431C21621B711FB0017CF39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8431C21521B711FB0017CF39 /* Assets.xcassets */; };
 		8431C21921B711FB0017CF39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8431C21721B711FB0017CF39 /* LaunchScreen.storyboard */; };
 		8431C22121B7FF2F0017CF39 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8431C22021B7FF2F0017CF39 /* Extensions.swift */; };
 		8431C22321BB0D910017CF39 /* SwipingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8431C22221BB0D910017CF39 /* SwipingController.swift */; };
 		8431C22521BC585D0017CF39 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8431C22421BC585D0017CF39 /* PageCell.swift */; };
 		8431C22721BC68580017CF39 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8431C22621BC68580017CF39 /* Page.swift */; };
+		8431C22921BD3DEE0017CF39 /* SwipingController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8431C22821BD3DEE0017CF39 /* SwipingController+extension.swift */; };
+		8431C22B21BD3EB10017CF39 /* SwipingController+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8431C22A21BD3EB10017CF39 /* SwipingController+UICollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8431C20B21B711F90017CF39 /* AutoLayout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoLayout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8431C20E21B711F90017CF39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8431C21021B711F90017CF39 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8431C21321B711F90017CF39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8431C21521B711FB0017CF39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8431C21821B711FB0017CF39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8431C21A21B711FB0017CF39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -30,6 +28,8 @@
 		8431C22221BB0D910017CF39 /* SwipingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingController.swift; sourceTree = "<group>"; };
 		8431C22421BC585D0017CF39 /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 		8431C22621BC68580017CF39 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		8431C22821BD3DEE0017CF39 /* SwipingController+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwipingController+extension.swift"; sourceTree = "<group>"; };
+		8431C22A21BD3EB10017CF39 /* SwipingController+UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwipingController+UICollectionView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,11 +63,11 @@
 			isa = PBXGroup;
 			children = (
 				8431C20E21B711F90017CF39 /* AppDelegate.swift */,
-				8431C21021B711F90017CF39 /* ViewController.swift */,
 				8431C22421BC585D0017CF39 /* PageCell.swift */,
 				8431C22221BB0D910017CF39 /* SwipingController.swift */,
+				8431C22A21BD3EB10017CF39 /* SwipingController+UICollectionView.swift */,
+				8431C22821BD3DEE0017CF39 /* SwipingController+extension.swift */,
 				8431C22021B7FF2F0017CF39 /* Extensions.swift */,
-				8431C21221B711F90017CF39 /* Main.storyboard */,
 				8431C21521B711FB0017CF39 /* Assets.xcassets */,
 				8431C21721B711FB0017CF39 /* LaunchScreen.storyboard */,
 				8431C21A21B711FB0017CF39 /* Info.plist */,
@@ -136,7 +136,6 @@
 			files = (
 				8431C21921B711FB0017CF39 /* LaunchScreen.storyboard in Resources */,
 				8431C21621B711FB0017CF39 /* Assets.xcassets in Resources */,
-				8431C21421B711F90017CF39 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,7 +146,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8431C21121B711F90017CF39 /* ViewController.swift in Sources */,
+				8431C22B21BD3EB10017CF39 /* SwipingController+UICollectionView.swift in Sources */,
+				8431C22921BD3DEE0017CF39 /* SwipingController+extension.swift in Sources */,
 				8431C22521BC585D0017CF39 /* PageCell.swift in Sources */,
 				8431C22721BC68580017CF39 /* Page.swift in Sources */,
 				8431C22121B7FF2F0017CF39 /* Extensions.swift in Sources */,
@@ -159,14 +159,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8431C21221B711F90017CF39 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8431C21321B711F90017CF39 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8431C21721B711FB0017CF39 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

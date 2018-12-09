@@ -8,27 +8,13 @@
 
 import UIKit
 
-
-/*
- let attributedText2 = NSMutableAttributedString(string: "Welcome, HERO", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18)])
- 
- attributedText2.append(NSAttributedString(string: "\n\n\nAre you ready to begin your journey?!?!  Before setting out on your first quest, look around town and see if there are any merchants or trainers willing to assist a young adventurer ready to make his/her name", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13), NSMutableAttributedString.Key.foregroundColor: UIColor.gray]))
- 
- 
- textView.attributedText = attributedText2
- */
-
 class PageCell: UICollectionViewCell {
     
     var page: Page? {
         didSet {
-            
             guard let unwrappedPage = page else {return}
-            
             bearImageView.image = UIImage(named: unwrappedPage.imageName)
-            
             let attributedText2 = NSMutableAttributedString(string: unwrappedPage.headerText, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18)])
-            
             attributedText2.append(NSAttributedString(string: "\n\n\n\(unwrappedPage.bodyText)", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13), NSMutableAttributedString.Key.foregroundColor: UIColor.gray]))
             descriptionTextView.attributedText = attributedText2
             descriptionTextView.textAlignment = .center
@@ -52,12 +38,8 @@ class PageCell: UICollectionViewCell {
     
     let descriptionTextView: UITextView = {
         let textView = UITextView()
-        
         let attributedText2 = NSMutableAttributedString(string: "Welcome, HERO", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18)])
-        
         attributedText2.append(NSAttributedString(string: "\n\n\nAre you ready to begin your journey?!?!  Before setting out on your first quest, look around town and see if there are any merchants or trainers willing to assist a young adventurer ready to make his/her name", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13), NSMutableAttributedString.Key.foregroundColor: UIColor.gray]))
-        
-        
         textView.attributedText = attributedText2
         textView.textAlignment = .center
         textView.isEditable = false
@@ -79,23 +61,19 @@ class PageCell: UICollectionViewCell {
     
     
     fileprivate func setupLayout() {
-        
         [bearImageView, descriptionTextView].forEach{topImageContainerView.addSubview($0)}
         addSubview(topImageContainerView)
-        
         NSLayoutConstraint.activate([
             topImageContainerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             topImageContainerView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.50),
             topImageContainerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             topImageContainerView.leadingAnchor.constraint(equalTo: leadingAnchor),
 //            topImageContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),  <--- removed "view" from each
-            
             bearImageView.centerXAnchor.constraint(equalTo: topImageContainerView.centerXAnchor),
             bearImageView.centerYAnchor.constraint(equalTo: topImageContainerView.centerYAnchor),
             bearImageView.heightAnchor.constraint(equalTo: topImageContainerView.heightAnchor, multiplier: 0.6),
-            
             descriptionTextView.topAnchor.constraint(equalTo: topImageContainerView.bottomAnchor, constant: 20),
-//            descriptionTextView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+//            descriptionTextView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)  //Text gives intrinsic height
             descriptionTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             descriptionTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             ])

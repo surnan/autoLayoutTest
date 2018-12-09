@@ -75,73 +75,19 @@ class SwipingController: UICollectionViewController, UICollectionViewDelegateFlo
         setupBottomControls()
     }
     
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return imageNames.count
-        return pages.count
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionCellID, for: indexPath) as! PageCell
-        
-        let page = pages[indexPath.item]
-        cell.page = page
-        
-        //        cell.backgroundColor = indexPath.item % 2 == 0 ? UIColor.blue : UIColor.green
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: view.frame.height)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        
         let x = targetContentOffset.pointee.x
-        
 //        print(x, view.frame, x/view.frame.width)
-        
         pageControl.currentPage =  Int (x / view.frame.width)
-        
-        
     }
-    
-    
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        collectionViewLayout.invalidateLayout()  //Makes it collectionView re-draw itself
-        
-        coordinator.animate(alongsideTransition: { [unowned self](_) in
-            self.collectionViewLayout.invalidateLayout()
-            
-            //accomdate for page zero because weird bug
-            if self.pageControl.currentPage == 0 {
-                self.collectionView.contentOffset = .zero
-            } else {
-                //reset the current page
-                let indexPath = IndexPath(item: self.pageControl.currentPage, section: 0)
-                self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-            }
-        }) { (_) in
-        }
-    }
-    
     
     //MARK:- My functions
     func setupBottomControls(){
         //        previousButton.frame = CGRect(x: 0, y: 0, width: 200, height: 50) //not valid with auto-layout
-        
         let bottomControlsStackView = UIStackView(arrangedSubviews: [previousButton, pageControl, nextButton])
         bottomControlsStackView.distribution = .fillEqually
-        
         bottomControlsStackView.translatesAutoresizingMaskIntoConstraints = false
         [bottomControlsStackView].forEach{view.addSubview($0)}
-        
-        
-        
         NSLayoutConstraint.activate([
             bottomControlsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             bottomControlsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
