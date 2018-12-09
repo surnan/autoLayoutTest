@@ -44,7 +44,7 @@ class SwipingController: UICollectionViewController, UICollectionViewDelegateFlo
     
     
     @objc func handleNextButton(){
-        let nextIndex = min(pageControl.currentPage + 1, pages.count)
+        let nextIndex = min(pageControl.currentPage + 1, pages.count - 1)
         let indexPath = IndexPath(row: nextIndex, section: 0)
         pageControl.currentPage = nextIndex
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
@@ -105,9 +105,28 @@ class SwipingController: UICollectionViewController, UICollectionViewDelegateFlo
         
 //        print(x, view.frame, x/view.frame.width)
         
-        pageControl.currentPage =  Int(x / view.frame.width)
+        pageControl.currentPage =  Int (x / view.frame.width)
         
         
+    }
+    
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        collectionViewLayout.invalidateLayout()  //Makes it collectionView re-draw itself
+        
+        coordinator.animate(alongsideTransition: { [unowned self](_) in
+            self.collectionViewLayout.invalidateLayout()
+            
+            //accomdate for page zero because weird bug
+            if self.pageControl.currentPage == 0 {
+                self.collectionView.contentOffset = .zero
+            } else {
+                //reset the current page
+                let indexPath = IndexPath(item: self.pageControl.currentPage, section: 0)
+                self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            }
+        }) { (_) in
+        }
     }
     
     
