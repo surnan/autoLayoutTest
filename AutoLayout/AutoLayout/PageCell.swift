@@ -30,7 +30,7 @@ class PageCell: UICollectionViewCell {
     
     private let topImageContainerView: UIView = {
         let image = UIView()
-        image.backgroundColor = UIColor.blue
+        image.backgroundColor = UIColor.white
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
@@ -51,7 +51,7 @@ class PageCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.purple
+        backgroundColor = UIColor.white
         setupLayout()
     }
     
