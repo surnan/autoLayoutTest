@@ -85,7 +85,7 @@ class PageCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
             topImageContainerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            topImageContainerView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5),
+            topImageContainerView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.50),
             topImageContainerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             topImageContainerView.leadingAnchor.constraint(equalTo: leadingAnchor),
 //            topImageContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),  <--- removed "view" from each
@@ -94,8 +94,8 @@ class PageCell: UICollectionViewCell {
             bearImageView.centerYAnchor.constraint(equalTo: topImageContainerView.centerYAnchor),
             bearImageView.heightAnchor.constraint(equalTo: topImageContainerView.heightAnchor, multiplier: 0.6),
             
-            descriptionTextView.topAnchor.constraint(equalTo: topImageContainerView.bottomAnchor, constant: 60),
-            descriptionTextView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            descriptionTextView.topAnchor.constraint(equalTo: topImageContainerView.bottomAnchor, constant: 20),
+//            descriptionTextView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             descriptionTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             descriptionTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             ])
